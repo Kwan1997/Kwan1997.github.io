@@ -1,0 +1,41 @@
+# jemdoc: menu{MENU}{index.html}, nofooter  
+==Jiewen Guan 
+
+~~~
+M.Eng. Student \n \n
+[https://auto.xmu.edu.cn/ Depart of Automation] \n
+[http://www.xmu.edu.cn Xiamen University (XMU)] \n \n
+E-mail: jwguan at stu.xmu.edu.cn
+~~~
+
+== Education
+
+- M.Eng., Department of Automation, Xiamen University, 2019-Present
+- B.Eng., Department of Information Engineering, Zhejiang University of Technology, 2015-2019
+
+== Awards
+- National 2nd Prize, Provincial 1st Prize (No.1), NXP Smart Car Competition, 2018 (which I treasure the most), \[[https://bj.bcebos.com/cdstm-hyetecforthesmartcar-bucket/d1224d427d264d388c157941b17fe969.pdf Technical Report (in Chinese)]\]
+- National 2nd Prize, China Robot Competition, 2018
+
+== Research Interests
+My current research interests lie at 
+- Optimization Theory and Algorithms
+- Tensor Computations
+- Machine Learning
+
+== Publications 
+- Bilian Chen, *Jiewen Guan*, Zhening Li. [https://ieeexplore.ieee.org/document/9737358 /"Unsupervised Feature Selection via Graph Regularized Nonnegative CP Decomposition"/], IEEE Transactions on Pattern Analysis and Machine Intelligence, Mar. 2022, [https://github.com/Kwan1997/CPUFS \[Code\]]
+    
+- *Jiewen Guan*, Xin Huang, Bilian Chen. [https://ieeexplore.ieee.org/document/9560111 /"Community-aware Social Recommendation: A Unified SCSVD Framework"/], IEEE Transactions on Knowledge and Data Engineering, Oct. 2021, [https://github.com/Kwan1997/SCSVD \[Code\]], [./papers/GHC2022ICDE.pdf \[Extended Abstract in ICDE 2022\]], [./papers/GHC2022ICDE_poster.pdf \[Poster in ICDE 2022\]]
+    
+- Xiaochang Lin, *Jiewen Guan*, Bilian Chen, Yifeng Zeng. [https://ieeexplore.ieee.org/document/9448330/ /"Unsupervised Feature Selection via Orthogonal Basis Clustering and Local Structure Preserving"/], IEEE Transactions on Neural Networks and Learning Systems, June 2021, [https://github.com/AdalinXMU/Unsupervised-Feature-Selection-via-Orthogonal-Basis-Clustering-and-Local-Structure-Preserving-code- \[Code\]]
+    
+- Zhehao Zhou, Shenbao Yu, *Jiewen Guan*, Bilian Chen, Langcai Cao. [https://ieeexplore.ieee.org/document/9201809/ /"Modeling Transition Matrix for a Collaborative Rating Prediction Recommendation System via Nonnegative Tensor Decomposition"/], IEEE International Conference on Computer Science and Education, Sep. 2020
+
+== Teaching Assistant
+- System Identification, Xiamen University, Spring 2020
+
+== Miscellaneous
+- [https://github.com/Kwan1997 Github Account]
+- [https://www.zhihu.com/people/guai-ren-95-13 Zhihu Account] (I occasionally write some English essays on optimization theory there)
+- My Master Thesis

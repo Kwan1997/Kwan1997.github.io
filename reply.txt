@@ -1,0 +1,116 @@
+Summary of Changes by Jiewen Guan, Xin Huang and Bilian Chen
+
+12-Aug-2021
+
+Dear Reviewers, Associate Editor, and Editor-in-Chief,
+Thank you very much for your constructive reviews on our manuscript (TKDE-2020-12-1442). 
+
+We have substantially revised the manuscript based on your comments and suggestions. We also listed below our  point-to-point responses to your detailed comments in an itemized manner. Some minor changes have also been conducted, including newly discovered typos and grammar errors. Besides, we have selected one dataset and integrated experimental results of Sections 5.5, 5.6, 5.7 into Fig. 8 to save space.
+
+Once again, thank you very much for your efforts. We look forward to hearing back from you soon.
+
+Sincerely yours,
+Bilian Chen
+(on behalf of all co-authors)
+====================================================================================================
+Detailed Replies to Reviewer 1
+
+Q1: Compared with the previous methods, the novelty and contributions of this paper are not clear. Does it introduce a new regularization term? Many previous methods based on SVD or MF have been proposed by using different regularizer. Which is the key contribution of this paper?
+
+A1: Thanks for your comment. Yes, our proposed framework is actually a regularized SVD++, which utilizes the underlying community structure in social networks to regularize user latent representations, and this is also the key novelty and contribution of this paper. We have added more details to illustrate this point in the third paragraph and the second contribution of Section 1.
+
+Q2: Recently, many deep models have been proposed for recommendations. These methods should be analyzed. Besides, this work is related to MF and embedding which has been explored in
+    
+''Deep Collaborative Embedding for Social Image Understanding",
+    
+''Weakly-supervised Semantic Guided Hashing for Social Image Retrieval",
+    
+and so on. These related works should be analyzed.
+
+A2: Thanks for the comment. We have enriched the related work in Section 2, as advised. First, we have added and discussed four new related studies on deep learning based recommendation models [36], [37], [38], [39] in the third paragraph of ''Social Recommendation'' in Section 2. These models use either fully-connected neural networks or graph neural networks to tackle the social recommendation problem. The main difference between them and ours is that they do not perform preference learning and user clustering in a unified way. Second, we have cited and discussed two suggested works on MF and embedding learning by Li et al. [20], [21] in a newly added ''Matrix  Factorization  based  Representation  Learning'' subsection in Section 2. These two models investigate how to utilize matrix factorization for social image understanding and retrieving, which study different problems but have close connections to our proposed model.
+
+Q3: In experiments, the compared methods seem somewhat old. More recent methods, especially the deep methods, should be introduced for comparison.
+
+A3: Good point! We have added three state-of-the-art deep learning methods [69], [70], [71] and conducted new experiments in Section 5.3. Specifically, we have added three deep learning based recommendation models including NGCF (by Wang et al., SIGIR 2019) [69], LightGCN (by He et al., SIGIR 2020) [70],  and MHCN (by Yu et al., WWW 2021) [71]. Fig. 5, Fig. 6 and Fig. 7 show that all the three methods perform worse than our SCSVD method on all three datasets, especially in terms of NDCG@20 and MRR@20. This is because they can only deal with implicit datasets, thus the concrete rating information cannot be exploited to guide the ranking process.
+
+Q4: The running time experiment should be conducted to compare the complexity of the proposed method.
+
+A4: Thanks for your comment. We have conducted a new experiment of efficiency and scalability evaluations in Section 5.8. Table 8 reports the running time results of SVD++, DANSER [69], GraphRec [70], MHCN [71], and  SCSVD  on all datasets. As the results in Table 8 convey, our SCSVD method consumes a slightly more time than SVD++, reflecting that SCSVD is nearly as efficient as SVD++ but achieves better quality results than SVD++ in Section 5.3. Moreover, our method SCSVD runs much faster than three deep learning methods DANSER, GraphRec and MHCN, validating its efficiency.
+
+Q5: The typesetting and writing are somewhat poor. There are some typos and grammar errors. More careful proofread should be conducted.
+
+A5: Thanks for your comment. We have proofread the paper carefully and revised all typos and grammar errors that we have found. Besides, we have adjusted the type-setting of the manuscript to make it neater.
+====================================================================================================
+
+A1: Other possible solutions/backbones for the proposed framework (other than SVD++) can be briefly discussed before focusing on this framework (such as MF+spectral clustering, NeuMF+GNN based community detection?)
+
+Q1: Thanks for your suggestion. We have added more possible solutions for community detection based social recommendation in the first paragraph of Section 4.1. We agree that one possible solution is to combine matrix factorization and spectral clustering for efficient recommendation. Another solution is to combine deep neural network based recommendation models and graph neural network based community detection models for exploiting higher-order interactions. 
+
+A2: More related work on the joint modeling of user social networks and recommendation can be referenced and discussed, such as [1][2][3].
+   
+[1] Tang, Jiliang, et al. "Exploiting local and global social context for recommendation." IJCAI. 2013.
+   
+[2] Zhang, Jia-Dong, and Chi-Yin Chow. "Geosoca: Exploiting geographical, social and categorical correlations for point-of-interest recommendations." SIGIR. 2015.
+    
+[3] Yang, Carl, et al. "Bridging collaborative filtering and semi-supervised learning: a neural approach for poi recommendation." KDD. 2017.
+
+Q2: Thank you for your suggestion. We have carefully read all these three papers [10], [33], [36] and added some discussions about them in the second and third paragraphs of ''Social Recommendation'' in Section 2. These models [10], [33], [36] perform recommendation modeling and social network mining in a joint learning manner to improve social recommendation. The main difference between them and ours is that they only use pairwise connections to improve recommendation, but we use the underlying community structure in the social network to improve recommendation.
+
+A3: The experimental results are not very consistent across the three datasets. Any discussions or remarks on this?
+
+Q3: We have added discussions in the third observation in Section 5.3.2 to analyze why some experimental results are not very consistent across the three datasets. This is mainly because different models have their own preferred  datasets with different statistics. For example, in terms of NDCG@20 and MRR@20, although SoReg performs relatively well on the Ciao dataset, its performance significantly deteriorates on the Flixster dataset shown in Fig. 5 and Fig. 6. The reason might be that, Flixster has only 12,144 social relations, compared to more than 100,000 social relations on Ciao and Epinions, which may impair the quality of social regularization.
+====================================================================================================
+
+A1: While the data analysis and several claims and hypotheses reveals the connections between community structures and user ratings, it is not clear about how does the detected communities look like? The authors should present some case studies to show the physical meanings of the generated communities and how they improve the performance of recommendation.
+
+Q1: Thanks for your nice comment. We have conducted a case study on detected communities in Section 3.4. Fig. 3 shows the graph visualization of two detected communities on Ciao dataset, where nodes in the same shape belong to the same community, the number in each node represents its ID, and the keywords associated with each community represent the common interests of community members (for a list of all categories (such as DVDs, etc.), please refer to https://www.cse.msu.edu/~tangjili/datasetcode/catalog_ciao.txt). The circle community is an interest group on Music and DVDs; on the other hand, the square community is an interest group on Ciao Cafe. The corresponding Table SI and Table SII in our supplemental material list the detailed consumption histories of rating items of those users, which are used to extract common interests of community members. As observed, community members have dense social connections within the community, and they tend to favor a specific type of products, which shows their homogeneous preferences. Besides, nearly every user pair in the same community shares common items (e.g., user #35 and user #392 purchased the same items #1336, #5236 and #2750), indicating that the users within the same community share more similar preferences shown in Fig. 3 and also the numerical results of Table 2. 
+   
+To evaluate the effectiveness of our community detection module, we have conducted a new experiment of  ablation study by removing community detection from SCSVD in Section 5.4. Table 7 shows that the pruned version of SCSVD without community detection (denoted as SCSVDp) performs worse than SCSVD, reflecting an improvement of community detection in recommendations.
+    
+In summary, our discovered communities share similar features in users' preferences, which can improve the recommendation task of rating prediction.
+
+A2: Although it is novel to have SVD been capable of detecting communities in a joint-learning manner, incorporating community structures into recommender systems is not new. Recent studies on graph neural network-based recommendation methods have tackled the similar issues, as listed below, and find implicit clusters of users can improve the recommendation performance. The authors should include and discuss these works, and have some of them to be compared in the experiments.
+
+- "Hierarchical Representation Learning for Bipartite Graphs" IJCAI 2019
+    
+- "Hierarchical Bipartite Graph Neural Networks: Towards Large-Scale E-commerce Applications" ICDE 2020
+    
+- "Addressing Cold Start in Recommender Systems with Hierarchical Graph Neural Networks" IEEE Big Data 2020
+
+Q2: Thanks for your suggestion. We have carefully read all these papers (cited as [37], [38], [39] in our revised manuscript) and discussed them in the last paragraph of ''Social Recommendation'' in Section 2. However, we have not compared them in the experiments, as their problem settings are different from ours. The detailed reasons are two-folds. First, [37], [38] require user profiles (such as gender, age, etc.) as input. However, such information is not available in all three datasets used in our experiments. Second, [39] requires item meta information (such as item features, etc.) as input. However, item meta information is only available in the Ciao and Epinions datasets. Besides, introducing additional item meta information breaks the fairness of our experiments, as other 15 competitive methods only accept rating and social information. Therefore, we only discuss these methods in Section 2. 
+
+Nevertheless, we have added three state-of-the-art deep learning based recommendation methods  NGCF  [69], LightGCN   [70],  and MHCN   [71] and conducted new experiments in Section 5.3.  Fig. 5, Fig. 6 and Fig. 7 show that all three methods  achieve worse performance than our SCSVD method on all three datasets, especially in terms of NDCG@20 and MRR@20. 
+
+A3: For the experiment on item ranking, currently only NDCG is adopted as the metric. Another widely-used one is Mean Reciprocal Rank (MRR). I would suggest to also report the MRR scores.
+
+Q3: Thanks for the comment. We have added the MRR metric and conducted a new experiment in Section 5.3.2, as advised. Fig. 6 reports that our proposed SCSVD attains top-3 performance among all methods on all the datasets, in terms of MRR scores. 
+
+A4: Although the authors have presented time complexity analysis, I still feel about the scalability of SCSVD. When the numbers of users and items get increased, is SCSVD still efficient, comparing to the competitive methods? An additional experiment on time efficiency can be conducted to dismiss this concern.
+
+Q4: Thanks for your suggestion. We have conducted new experiments of efficiency and scalability evaluations in Section 5.8. Specifically, we run SVD++, SCSVD, DANSER [69], GraphRec [70] and MHCN [71] on three real datasets Ciao, Epinions, Flixster, and also five  synthetic datasets with the increased number of users as {100, 500, 1000, 5000, 10000}. Table 8 shows that our SCSVD method achieves a scalable efficiency on five synthetic datasets with the increased number of users. Moreover, SCSVD  consumes a slightly more time than SVD++, reflecting that SCSVD is nearly as efficient as SVD++ but achieves better quality results than SVD++ in Section 5.3. Furthermore, our method SCSVD runs much faster than three deep learning methods DANSER, GraphRec, and MHCN, validating the efficiency and scalability of SCSVD.
+
+A5: I am curious about the effectiveness of community detection. The authors can evaluate the quality of the derived communities by reporting the NMI or normalized cut values, with comparisons to typical community detection algorithms like Louvain. I am worried that the derived clusters that can benefit recommendation performance are not so like "communities". Some visualization can be used to demonstrate the derived "communities" in the form of network structure.
+
+Q5: Thanks for your suggestions. We have conducted a new experiment to test our community quality. We compare with BigClam [46] for community detection in directed graphs, as Louvain works on undirected graphs. The results of normalized cut values on Ciao dataset show that our method SCSVD is worse than BigClam that focuses on the community detection. Thus, we agree that SCSVD is not competent with such community-oriented algorithms like BigClam in terms of community structure. We have added this remark in the end of the second paragraph of Section 4.6.
+
+The reason is mainly because the module of community detection serves as an auxiliary term of our SCSVD model, which is used to improve recommendation performance. The main task of our SCSVD model is learning user preferences. Besides, our learned user embeddings have a close distance in each of the top-5 biggest communities as shown in Fig. 8(c). 
+
+Nevertheless, to further evaluate the effectiveness of our community detection module, we have conducted a new experiment of ablation study by removing community detection from SCSVD in Section 5.4. Table 7 shows that the pruned version of SCSVD without community detection (denoted as SCSVDp) performs worse than SCSVD, reflecting an improvement of community detection in recommendations.
+
+In summary, although the communities detected by SCSVD may not be cohesive compared with the community-oriented algorithms, our communities can capture similar features in users' preferences, thereby improving the recommendation task of rating prediction.
+
+A6: An ablation study is suggested to be conducted, i.e., displaying the performance of each component of SCSVD by removing it. For example, removing the term of modularity maximization in the loss function.
+
+Q6: Thanks for your comment. We have conducted a new experiment of ablation study to show the effectiveness of community detection in Section 5.4. Specifically, we remove modularity maximization and its corresponding linear mapping term from the objective function of SCSVD (i.e., let α=β=0), and evaluate the performance of this pruned SCSVD (denoted as SCSVDp). Table 7 shows that SCSVDp performs worse than SCSVD, reflecting that community detection can indeed help improve recommendations.
+
+A7: Two missing clustering-based SVD studies should be discussed and evaluated if comparable.
+	
+- "SSLSVD: Semi-supervised Learning-based Sparse Trust Recommendation" ACM TOIT 2020.
+    
+- "Clustering-based factorized collaborative filtering" ACM RecSys 2013
+
+Q7: Thanks for the comment. We have discussed these two studies SSLSVD [35] and CBSVD [32] in the second paragraph of ''Social Recommendation'' in Section 2 and conducted new experiments on them in Section 5.3. 
+
+Specifically, CBSVD [32] first clusters users and items according to their latent preferences by k-means clustering, and then uses the learned user and item clusters to enhance SVD++. SSLSVD [35] first clusters user social relations into trust and distrust by a transductive support vector machine, and then uses the clustering results to enhance TrustSVD. These two models [32], [35] perform clustering-based recommendation in a two-stage manner, which is different from our work.
+
+In addition, we have evaluated these two methods  for rating prediction and item recommendation in Section 5.3. Table 5 and Table 6 show  that our proposed SCSVD is very competitive with these models, and wins SSLSVD  and CBSVD  in most cases of rating prediction. Fig. 5, Fig. 6 and Fig. 7 show that our SCSVD attains top-3 performance on all the datasets, and wins SSLSVD and CBSVD  in most cases of item recommendation.
